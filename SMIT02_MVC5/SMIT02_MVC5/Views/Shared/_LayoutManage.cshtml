@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <title>寵愛生活</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="~/Content/index.css" type="text/css" />
+    <script type="text/javascript" src="~/scripts/index.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/Home/Index">寵愛生活</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="/Manage/MemberBoard">會員管理</a></li>
+                    <li><a href="/Manage/Create">新增商品</a></li>
+                    <li><a href="/Manage/ItemList">商品列表</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" id="Member"><span class="glyphicon glyphicon-user"></span>系統管理員</a></li>
+                </ul>
+            </div>
+        </nav>
+        <hr>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer></footer>
+        </div>
+    </div>
+ </body>
+</html>

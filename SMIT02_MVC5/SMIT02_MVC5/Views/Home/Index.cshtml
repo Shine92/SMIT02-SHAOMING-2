@@ -1,0 +1,17 @@
+﻿@using SMIT02_MVC5.Models;
+@model List<Item>
+<div class="well well-sm">新品上架</div>
+<div class="row">
+    @{ foreach (var item in Model) {
+            <div class="col-sm-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading"></div>
+                    <div class="panel-body"><a href="/Product/Detail/@item.Id"><img src="~/Images/@item.Image" class="img-responsive" style="width:100%" alt="Image"></a></div>
+                    <div class="panel-footer">
+                        <div class="panelFooterTitle">@item.Name</div>
+                        <div class="panelFooterPrice">NT$@item.Price</div>
+                    </div>
+                </div>
+            </div>
+        } }
+</div>

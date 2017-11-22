@@ -1,0 +1,44 @@
+﻿@using SMIT02_MVC5.Models;
+@model Member
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">會員註冊</div>
+                <form method="post" action="">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="account">帳號:</label>
+                            <input type="text" class="form-control input-sm" id="Account" name="Account" value="@Model.Account">
+                            <span class="help-block">@TempData["CheckResult"]</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">密碼:</label>
+                            <input type="password" class="form-control input-sm" id="Password" name="Password" value="@Model.Password">
+                            @*<span class="help-block">This is some help text that breaks</span>*@
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">姓名:</label>
+                            <input type="text" class="form-control input-sm" id="Name" name="Name" value="@Model.Name">
+                            @*<span class="help-block">This is some help text that breaks</span>*@
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">電子信箱:</label>
+                            <input type="email" class="form-control input-sm" id="Email" name="Email" value="@Model.Email">
+                            @*<span class="help-block">This is some help text that breaks</span>*@
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <input type="submit" id="RegisterBtn" class="btn btn-success btn-block center-block" value="確認"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

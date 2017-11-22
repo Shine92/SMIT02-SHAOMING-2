@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB1006Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CartBuy">
+    <Key>
+      <PropertyRef Name="Cart_Id" />
+    </Key>
+    <Property Name="Cart_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Item_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_CartBuy_Item" FromRole="CartBuy" ToRole="Item" />
+    <Property Name="Unit" Type="Int32" Nullable="false" />
+    <Property Name="Member_Id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CartSave">
+    <Key>
+      <PropertyRef Name="Account" />
+    </Key>
+    <Property Name="Account" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cart_Id" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UnitStock" Type="Int32" />
+    <NavigationProperty Name="CartBuys" Relationship="Self.FK_CartBuy_Item" FromRole="Item" ToRole="CartBuy" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Account" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CartBuy_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="CartBuy" Type="Self.CartBuy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CartBuy">
+        <PropertyRef Name="Item_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB1006Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CartBuys" EntityType="Self.CartBuy" />
+    <EntitySet Name="CartSaves" EntityType="Self.CartSave" />
+    <EntitySet Name="Items" EntityType="Self.Item" />
+    <EntitySet Name="Members" EntityType="Self.Member" />
+    <AssociationSet Name="FK_CartBuy_Item" Association="Self.FK_CartBuy_Item">
+      <End Role="Item" EntitySet="Items" />
+      <End Role="CartBuy" EntitySet="CartBuys" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

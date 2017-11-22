@@ -1,0 +1,124 @@
+﻿@model List<SMIT02_MVC5.Models.Member>
+
+@{
+    ViewBag.Title = "MemberBoard";
+    Layout = "~/Views/Shared/_LayoutManage.cshtml";
+}
+
+<div class="container">
+    <h2>會員管理</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>會員姓名</th>
+                <th>會員帳號</th>
+                <th>電子信箱</th>
+                <th>會員權限</th>
+                <th>修改</th>
+                <th>刪除</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ foreach (var member in Model) {
+                    <tr id="@member.Id">
+                        <td>@member.Name</td>
+                        <td>@member.Account</td>
+                        <td>@member.Email</td>
+                        <td>@((member.IsAdmin == true) ? "系統管理員" : "一般使用者")</td>
+                        <td><button id="memberEditBtn" class="btn btn-xs glyphicon glyphicon-pencil memberEditBtn"></button></td>
+                        @{ if (member.IsAdmin == true) {
+                                <td><button id="memberDelete" class="btn btn-xs disabled glyphicon glyphicon-trash memberDelete" disabled="disabled"></button></td>
+                            } else {
+                                <td><button id="memberDelete" class="btn btn-xs glyphicon glyphicon-trash memberDelete"></button></td>
+                            } }
+                    </tr>
+                            } }
+        </tbody>
+    </table>
+</div>
+
+<!-- 對話盒 -->
+<div id="editModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>新增/修改</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="editId" name="Id"/>
+                    <div class="form-group">
+                        <label for="accountTextBox">
+                            <span class="glyphicon glyphicon-th-list"></span>
+                            會員帳號
+                        </label>
+                        <input type="text"
+                               id="accountTextBox"
+                               class="form-control"
+                               name="Account"
+                               placeholder="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="nameTextBox">
+                            <span class="glyphicon glyphicon-user"></span>
+                            會員姓名
+                        </label>
+                        <input type="text"
+                               id="nameTextBox"
+                               class="form-control"
+                               name="Name"
+                               placeholder="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordTextBox">
+                            <span class="glyphicon glyphicon-eye-close"></span>
+                            會員密碼
+                        </label>
+                        <input type="password"
+                               id="passwordTextBox"
+                               class="form-control"
+                               name="Password"
+                               placeholder=""
+                               disabled="disabled">
+                    </div>
+                    <div class="form-group">
+                        <label for="emailTextBox">
+                            <span class="glyphicon glyphicon-envelope"></span>
+                            電子信箱
+                        </label>
+                        <input type="text"
+                               id="emailTextBox"
+                               class="form-control"
+                               name="Email"
+                               placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="isAdmin">權限設定</label>
+                        <select class="form-control" id="isAdmin" name="IsAdmin">
+                            <option value="0">一般使用者</option>
+                            <option value="1">系統管理者</option>
+
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="pull-right">
+                    <button type="button"
+                            id="okButton"
+                            class="btn btn-success">
+                        <span class="glyphicon glyphicon-ok"></span> 確定
+                    </button>
+                    <button type="button"
+                            id="cancelButton"
+                            class="btn btn-default"
+                            data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span> 取消
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /對話盒 -->

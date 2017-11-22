@@ -1,0 +1,39 @@
+﻿ body {
+     padding-top: 20px;
+     background-color: #FCFCFC;
+ }
+ 
+ .navbar {
+     background-color: #FFFFFF;
+ }
+
+ .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+ }
+ 
+ .modal-header,h4,.close {
+     background-color: #FCFCFC;
+     color: #7B7B7B !important;
+     text-align: center;
+     font-size: 30px;
+ }
+ 
+ .modal-footer {
+     background-color: #f9f9f9;
+ }
+ 
+ .well {
+     text-align: center;
+     font-size: 20px;
+ }
+ 
+ .panel-heading {
+     font-size: 26px;
+     text-align: center;
+ }
+ 
+ .panel-footer {
+     text-align: right;
+ }
+ 

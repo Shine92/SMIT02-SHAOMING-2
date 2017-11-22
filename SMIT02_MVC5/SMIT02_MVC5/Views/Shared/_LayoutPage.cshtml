@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <title>寵愛生活</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="~/Content/index.css" type="text/css" />
+    <script type="text/javascript" src="~/scripts/index.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="~/Home/Index">寵愛生活</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="category.html">寵物部落</a></li>
+                    @*<li><a href="category.html">寵物直播</a></li>*@
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="">寵物食品<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="~/Category/Index">狗飼料</a></li>
+                            <li><a href="~/Category/Index">貓飼料</a></li>
+                            <li><a href="~/Category/Index">其他飼料</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="category.html">寵物醫院</a></li>
+                    <li><a href="category.html">尋寵啟示</a></li>
+                    <li><a href="category.html">動物認養</a></li>
+                    @*<li><a href="category.html">友站連結</a></li>*@
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @{
+                        if (Session["Account"] != null) {
+                            <li><a href="/Member/MemberCenter" id="Member"><span class="glyphicon glyphicon-user"></span> 會員中心</a></li>
+                            <li><a href="/Member/Logout" id="Member"><span class="glyphicon glyphicon-log-out"></span> 會員登出</a></li>
+                        } else {
+                            <li><a href="/Member/Login" id="loginItem"><span class="glyphicon glyphicon-user"></span> 會員登入</a></li>
+                        }
+                    }
+                    <li><a href="shoppingCart.html"><span class="glyphicon glyphicon-shopping-cart" id="ShoppCart"></span> 購物車<span id="shoppingCart"></span></a></li>
+                </ul>
+            </div>
+        </nav>
+        <hr>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer></footer>
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

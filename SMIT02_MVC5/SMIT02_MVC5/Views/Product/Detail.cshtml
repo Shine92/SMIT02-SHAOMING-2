@@ -1,0 +1,49 @@
+﻿@using SMIT02_MVC5.Models;
+@model List<Item>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<div class="container productDetailContainer">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="row">
+                @{ foreach (var item in Model) {
+                        <div class="col-sm-5">
+                            <input type="hidden" id="memberId" value="@Request.Cookies["id"].Value" />
+                            <input type="hidden" id="itemDteailId" name="itemId" value="@item.Id" />
+                            <img src="~/Images/@item.Image" class="img-responsive"></img>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="productDetailText">
+                                <h3>@item.Name</h3>
+                                <hr>
+                                <p>極致零穀配方：不含榖物，以高品質豌豆、鷹嘴豆、馬鈴薯作為低過敏性的碳水化合物來源。純天然不含人工香料、色素與防腐劑。
+                                    <br /> 優質蛋白質：特選雞肉、鮭魚、火雞肉，是優質的動物性蛋白質，更是Omega3的來源，營養完整且容易消化。
+                                    <br /> 鮮採5種蔬果：甜菜根、蕃茄、馬鈴薯、豌豆與菊苣根提供豐富且天然的維生素、礦物質與抗氧化物，增強免疫力。
+                                    <br />
+                                </p>
+                            </div>
+                            <form class="form-inline">
+                                <div class="productDetailPrice pull-left">$@item.Price</div>
+                                <div class="pull-right">
+                                    <div class="form-group">
+                                        <label for="sel1">數量:</label>
+                                        <select class="form-control" id="sel1">
+                                            @{ for (int i = 1; i <= item.UnitStock; i++) {
+                                                    <option value="@i">@i</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                    <input type="submit" id="addShoppingCart" class="btn btn-danger" value="加入購物車"/>
+                                </div>
+                            </form>
+                        </div>
+                    } }
+            </div>
+        </div>
+    </div>
+</div>
+

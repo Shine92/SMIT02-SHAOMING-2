@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutManage.cshtml";
+}
+
+<div class="container">
+    <form method="post" action="~/Manage/Create" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">新增商品</div>
+                    <div class="panel-body">
+                        <input type="hidden" name="Id" value="1" />
+                        <div class="form-group">
+                            <label for="usr">商品名稱:</label>
+                            <input type="text" class="form-control input-sm" id="itemName" name="Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="itemPrice">商品價錢:</label>
+                            <input type="text" class="form-control input-sm" id="itemPrice" name="Price">
+                        </div>
+                        <div class="form-group">
+                            <label for="itemUnitStock">商品數量:</label>
+                            <input type="text" class="form-control input-sm" id="itemUnitStock" Name="UnitStock">
+                        </div>
+                        <div class="form-group">
+                            <label for="itemFile">圖片:</label>
+                            <input type="file" class="" id="itemFile" Name="ImageFile">
+                        </div>
+                        <div class="panel-footer">
+                            <button type="submit" class="btn btn-success btn-lg center-block">新增</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+

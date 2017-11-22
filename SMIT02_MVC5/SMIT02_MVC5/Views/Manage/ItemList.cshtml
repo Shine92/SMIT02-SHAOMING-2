@@ -1,0 +1,90 @@
+﻿@model List<SMIT02_MVC5.Models.Item>
+@{
+    ViewBag.Title = "ItemList";
+    Layout = "~/Views/Shared/_LayoutManage.cshtml";
+}
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-10 col-md-offset-1">
+            <h2>商品列表</h2>
+            <ul id="latestNews" class="list-group">
+                @{ foreach (var item in Model) {
+                        <li id="@item.Id" class="list-group-item">@item.Name<span class="pull-right"><button class="btn btn-info btn-xs editItem"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>&nbsp;<button class="btn btn-danger btn-xs deleteItem"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></span></li>
+                    } }
+            </ul>
+        </div>
+
+    </div>  <!-- end of row -->
+
+</div> <!-- end of container -->
+
+<!-- 對話盒 -->
+<div id="editItemModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>編輯商品</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="editId" name="Id" />
+                    <input type="hidden" id="editImage" name="Image" />
+                    <div class="form-group">
+                        <label for="productNameTextBox">
+                            <span class="glyphicon glyphicon-th-list"></span>
+                            商品名稱
+                        </label>
+                        <input type="text"
+                               id="productNameTextBox"
+                               class="form-control"
+                               name="Name"
+                               placeholder="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="productPriceTextBox">
+                            <span class="glyphicon glyphicon-user"></span>
+                            商品價格
+                        </label>
+                        <input type="text"
+                               id="productPriceTextBox"
+                               class="form-control"
+                               name="Price"
+                               placeholder="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="productUnitTextBox">
+                            <span class="glyphicon glyphicon-envelope"></span>
+                            商品數量
+                        </label>
+                        <input type="text"
+                               id="productUnitTextBox"
+                               class="form-control"
+                               name="UnitStick"
+                               placeholder="">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="pull-right">
+                    <button type="button"
+                            id="editItemOkButton"
+                            class="btn btn-success">
+                        <span class="glyphicon glyphicon-ok"></span> 確定
+                    </button>
+                    <button type="button"
+                            id="editItemCancelButton"
+                            class="btn btn-default"
+                            data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span> 取消
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /對話盒 -->
+
